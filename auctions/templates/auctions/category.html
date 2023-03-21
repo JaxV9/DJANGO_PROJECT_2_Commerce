@@ -1,0 +1,28 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h1>Category : {{ category.name }}</h1>
+
+<div class="cards">
+    {% for listing in listings %}
+    
+            <div class="card">
+                <a href="{% url 'listing' listing.id %}" class="link" id="a_none">
+                <img src="{{ listing.image }}" class="product">
+                <div class="price">
+                    <p> {{ listing.price }} $</p>
+                </div>
+                    <h3 class="title_listing">{{ listing.title|truncatechars:25 }}</h3>
+                
+                <strong><p>{{ listing.category }}</p></strong>
+                <p class="description_listing"> {{ listing.description|truncatechars:70 }}</p>
+                <strong><p></strong> {{ listing.user }}</strong> {{ listing.date }}</p>
+                </a>
+            </div>
+    
+    {% endfor %}
+</div>
+
+
+{% endblock %}
